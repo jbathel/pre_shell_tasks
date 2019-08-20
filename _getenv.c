@@ -8,14 +8,13 @@
 #include <signal.h>
 #include "shell.h"
 
-
 /**
  * _strlen - returns length of a string given a character input
  * @s: address of string input
  * @length: length of string
  * return - void.
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int length = 0;
 
@@ -31,7 +30,7 @@ int _strlen(char *s)
  * @s_val: string to finde
  * Return: 1 - true; 0 - false
  */
-* int char_check(char *s, const char *in)
+int char_check(char *s, const char *in)
 {
 	int i;
 
@@ -51,20 +50,18 @@ int _strlen(char *s)
  * @name: name to search for
  * Return: value of variable
  */
-
- 
 char *_getenv(const char *name, char **env)
 {
 	int i;
 	char **environ;
 
-	environ = *env;
+	environ = env;
 
 	if (!environ || !name)
 		return (NULL);
 
 	i = 0;
-	while (environ[i] != 'NULL')
+	while (environ[i] != 0)
 	{
 		if (char_check(environ[i], name))
 			return (environ[i] + _strlen(name) + 1);
