@@ -35,6 +35,27 @@ typedef struct builtin_sh
 
 
 int printenv(char **args, char ***env, node_t **path_list, node_t **hist_list);
-unsigned int _strlen(char *s);
+int _strlen(const char *s);
+extern char **environ;
+int _setenv(const char *name, const char *value, int overwrite);
+char *_getenv(const char *name);
+int _unsetenv(const char *name);
+
+char *_memcpy(char *dest, const char *src, unsigned int n);
+int _strncmp(char *s1, char *s2, size_t bytes);
+int char_check(char *s, const char *in)
+{
+	int i;
+
+	i = 0;
+	while (*(s + i) == *(in + i) && *(s + i) != '\0' && *(in + i) != '\0')
+		++i;
+
+	if (*(in + i) == '\0')
+		return (1);
+
+	return (0);
+}
+
 
 #endif /* SHELL_H */
