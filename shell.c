@@ -1,4 +1,5 @@
 #include "holberton.h"
+			n = row * col;
 
 int main(void)
 {
@@ -9,7 +10,9 @@ int main(void)
 	size_t index = 0;
 	char *argv[2];
 
-	printf("$ ");
+	while(1)
+	{
+	write(STDIN_FILENO, "$ ", 2);
 	index = getline(&line, &size, stdin);
 	strtok(line, "\n");
 	printf("value of index = %lu\n", index);
@@ -32,7 +35,7 @@ int main(void)
 	{
 		printf("Inside parent, waiting for child\n");
 		wait(&status);
-		printf("$ ");
+	}
 	}
 	return (0);
 }
